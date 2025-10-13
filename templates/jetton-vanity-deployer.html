@@ -172,7 +172,8 @@ endblock %} {% block head %}
     msgBody.refs[0] = jettonMinterCode;
     msgBody.refs[1] = jettonMinterData;
 
-    const estAddress = new Address(this.options.wc + ":" + bytesToHex(stateInitHash));
+    const stateInitHash = await stateInit.hash();
+    const estAddress = new Address(0 + ":" + TonWeb.utils.bytesToHex(stateInitHash));
     
     if (estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false)) {
       alert('Addresses are equal');
