@@ -163,6 +163,9 @@ endblock %} {% block head %}
     vanityData.bits.writeAddress(new Address(state.address));
     vanityData.bits.writeBytes(saltBytes);
 
+    console.log(vanityContractCode);
+    console.log(vanityData);
+
     const stateInit = TonWeb.Contract.createStateInit(
       vanityContractCode,
       vanityData
