@@ -194,12 +194,18 @@ endblock %} {% block head %}
         {
             address: estAddress.toString(true, true, false, false),
             amount: "50000000",
+            payload: (await msgBody.toBoc()).toBase64(),
             stateInit: (await stateInit.toBoc()).toBase64(),
         },
       ]
     };
 
-    console.log(transaction);
+    async function sendTransaction() {
+        const result = await tonConnectUI.sendTransaction(transaction);
+        return result;
+    }
+
+    sendTransaction();
     
     alert('Form submitted successfully! Check console for details.');
   });
