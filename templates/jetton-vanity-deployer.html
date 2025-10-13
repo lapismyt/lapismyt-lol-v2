@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% block title %}Jetton Vanity Deployer | lapis.uno{%
 endblock %} {% block head %}
-<script src="https://cdn.jsdelivr.net/gh/orbs-network/ton-access@2.2.0/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/toncenter/tonweb/dist/tonweb.js"></script>
 <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 {% endblock %} {% block content %}
@@ -27,9 +26,8 @@ endblock %} {% block head %}
     manifestUrl: '{{ url_for("static", path="tonconnect-manifest.json") }}',
     buttonRootId: "ton-connect",
   });
-  TonAccess.getHttpEndpoint().then((endpoint) => {
-    const tonweb = new TonWeb(new TonWeb.HttpProvider(endpoint)); 
-  });
+  const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: ''}));
+
   const Address = TonWeb.utils.Address;
 
 
@@ -53,7 +51,7 @@ endblock %} {% block head %}
     document.getElementById("wallet-connect-status").innerHTML =
         "Connected <code>" + state.address + "</code>";
     console.log("Wallet connected:", wallet);
-    }
+  }
 
   tonConnectUI.onStatusChange(
     (wallet) => {
