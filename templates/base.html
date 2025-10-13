@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}lapis.uno{% endblock %}</title>
     
+    <meta name="title" content="{% block meta_title %}lapis.uno{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Python developer, Minecraft enjoer, Blockchains and AI explorer{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}python rust lapis lapismyt lapismyt_channel backend development aiogram fastapi ton bot telegram the-open-network llm gemini ai minecraft{% endblock %}">
+    <meta name="author" content="LapisMYT">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical %}https://lapis.uno/{% endblock %}">
+    
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lapis.uno/">
+    <meta property="og:url" content="{% block og_url %}https://lapis.uno/{% endblock %}">
     <meta property="og:title" content="{% block og_title %}lapis.uno{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Python developer, Minecraft enjoyer, Blockchains and LLMs explorer.{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Python developer, Minecraft enjoer, Blockchains and AI explorer{% endblock %}">
     <meta property="og:image" content="{% block og_image %}https://lapis.uno/static/images/logo.jpg{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="lapis.uno">
+    <meta property="og:locale" content="en_US">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{% block twitter_url %}https://lapis.uno/{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}lapis.uno{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Python developer, Minecraft enjoer, Blockchains and AI explorer{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}https://lapis.uno/static/images/logo.jpg{% endblock %}">
+    <meta name="twitter:creator" content="@LapisMYT">
+    <meta name="twitter:site" content="@LapisMYT">
+    
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+    <link rel="apple-touch-icon" href="/static/images/favicon.png">
+    
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

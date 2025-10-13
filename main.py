@@ -22,6 +22,16 @@ async def favicon(request: Request) -> Response:
     return FileResponse(path='static/images/favicon.ico')
 
 
+@app.get('/robots.txt', response_class=FileResponse)
+async def robots(request: Request) -> Response:
+    return FileResponse(path='static/robots.txt', media_type='text/plain')
+
+
+@app.get('/sitemap.xml', response_class=FileResponse)
+async def sitemap(request: Request) -> Response:
+    return FileResponse(path='static/sitemap.xml', media_type='application/xml')
+
+
 @app.get('/', response_class=HTMLResponse)
 async def read_item(request: Request) -> Response:
     return templates.TemplateResponse(
