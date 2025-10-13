@@ -179,14 +179,27 @@ endblock %} {% block head %}
     const stateInitHash = await stateInit.hash();
     const estAddress = new Address(0 + ":" + TonWeb.utils.bytesToHex(stateInitHash));
     
-    if (estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false)) {
-      alert('Addresses are equal');
-      return;
-    } else {
+    if (not (estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false))) {
+    //   alert('Addresses are equal');
+    //   return;
+    // } else {
       alert('Addresses are not equal');
       console.log(estAddress.toString(true, true, false, false));
       return;
     }
+
+    const transaction = {
+      validUntil: Math.floor(Date.now() / 1000) + (60 * 5), // 5 minutes
+      messages: [
+        {
+            address: estAddress.toString(true, true, false, false),
+            amount: "50000000",
+            stateInit: stateInit.toBoc(),
+        },
+      ]
+    };
+
+    console.log(transaction);
     
     alert('Form submitted successfully! Check console for details.');
   });
