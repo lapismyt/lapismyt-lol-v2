@@ -45,10 +45,20 @@ endblock %} {% block head %}
 
   var state = {};
 
+  if (tonConnectUI.account) {
+    const rawAddress = tonConnectUI.account.address;
+    const address = new Address(rawAddress);
+    state.address = address.toString(true, true, false, false);
+    document.getElementById("wallet-connect-status").style.color = "green";
+    document.getElementById("wallet-connect-status").innerHTML =
+        "Connected <code>" + state.address + "</code>";
+    console.log("Wallet connected:", wallet);
+    }
+
   tonConnectUI.onStatusChange(
     (wallet) => {
-      if (wallet) {
-        const rawAddress = wallet.account.address;
+      if (tonConnectUI.account) {
+        const rawAddress = tonConnectUI.account.address;
         const address = new Address(rawAddress);
         state.address = address.toString(true, true, false, false);
         document.getElementById("wallet-connect-status").style.color = "green";
