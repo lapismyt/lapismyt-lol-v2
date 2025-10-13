@@ -171,7 +171,7 @@ endblock %} {% block head %}
     var msgBody = new Cell();
     msgBody.refs[0] = jettonMinterCode;
     msgBody.refs[1] = jettonMinterData;
-a
+
     const estAddress = new Address(this.options.wc + ":" + bytesToHex(stateInitHash));
     
     if (estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false)) {
