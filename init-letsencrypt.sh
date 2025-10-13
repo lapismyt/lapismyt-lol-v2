@@ -29,25 +29,18 @@ if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/
   echo
 fi
 
-echo "### Creating dummy certificate for $domains ..."
-path="/etc/letsencrypt/live/$domains"
-mkdir -p "$data_path/conf/live/$domains"
-docker-compose run --rm --entrypoint "\
-  openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
-    -keyout '$path/privkey.pem' \
-    -out '$path/fullchain.pem' \
-    -subj '/CN=localhost'" certbot
+echo "### Stopping any running containers ..."
+docker-compose down
 echo
 
-echo "### Starting nginx ..."
-docker-compose up --force-recreate -d nginx
+echo "### Starting nginx with temporary config for certificate acquisition ..."
+docker-compose run -d --name temp-nginx --service-ports \
+  -v $(pwd)/nginx/nginx-certbot.conf:/etc/nginx/nginx.conf:ro \
+  nginx nginx -g "daemon off;"
 echo
 
-echo "### Deleting dummy certificate for $domains ..."
-docker-compose run --rm --entrypoint "\
-  rm -Rf /etc/letsencrypt/live/$domains && \
-  rm -Rf /etc/letsencrypt/archive/$domains && \
-  rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
+echo "### Waiting for nginx to start ..."
+sleep 5
 echo
 
 echo "### Requesting Let's Encrypt certificate for $domains ..."
@@ -74,7 +67,25 @@ docker-compose run --rm --entrypoint "\
     --rsa-key-size $rsa_key_size \
     --agree-tos \
     --force-renewal" certbot
+
+if [ $? -ne 0 ]; then
+  echo "### Certificate acquisition failed!"
+  echo "### Stopping temporary nginx ..."
+  docker stop temp-nginx
+  docker rm temp-nginx
+  exit 1
+fi
+
 echo
 
-echo "### Reloading nginx ..."
-docker-compose exec nginx nginx -s reload
+echo "### Stopping temporary nginx ..."
+docker stop temp-nginx
+docker rm temp-nginx
+echo
+
+echo "### Starting all services with full HTTPS configuration ..."
+docker-compose up -d
+echo
+
+echo "### Certificate acquisition complete!"
+echo "### Your site should now be available at https://lapis.uno"

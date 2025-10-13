@@ -13,8 +13,6 @@ services:
       - app-network
     environment:
       - PYTHONUNBUFFERED=1
-    depends_on:
-      - nginx
 
   nginx:
     image: nginx:alpine
@@ -30,8 +28,6 @@ services:
       - ./nginx/logs:/var/log/nginx
     networks:
       - app-network
-    depends_on:
-      - certbot
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   certbot:
