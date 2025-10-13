@@ -14,9 +14,10 @@
         <p>Deploy jetton with custom address using <a href="https://github.com/ton-community/vanity-contract">vanity-contract</a>.</p>
     </div>
     <div class="body-card">
-        <h2>Connect TON</h2>
-        <p>Connect your TON wallet to deploy jettons.</p>
+        <h2>Connect TON Wallet</h2>
+        <p>Connect your TON wallet to deploy jetton.</p>
         <div id="ton-connect"></div>
+        <div id="wallet-connect-status" style="color: red;">Not connected</div>
     </div>
 </div>
 {% endblock %}
@@ -37,5 +38,20 @@
             console.error("Error connecting to wallet:", error);
         });
     };
+
+    tonConnectUI.onStatusChange(
+        (wallet) => {
+            if (wallet) {
+                document.getElementById('wallet-connect-status').style.color = 'green';
+                document.getElementById('wallet-connect-status').innerHTML = 'Connected';
+                console.log("Wallet connected:", wallet);
+            }
+        },
+        (error) => {
+            console.error("Error connecting to wallet:", error);
+            document.getElementById('wallet-connect-status').style.color = 'red';
+            document.getElementById('wallet-connect-status').innerHTML = 'Not connected';
+        }
+    );
 </script>
 {% endblock %}
