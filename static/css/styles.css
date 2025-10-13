@@ -505,12 +505,13 @@ input[type="text"],
 input[type="email"], 
 input[type="password"], 
 textarea {
-    background: var(--card-bg);
+    background: var(--bg-color) !important;
     border: 1px solid rgba(100, 255, 218, 0.3);
     padding: 0.75rem 1rem;
     border-radius: 8px;
     transition: all 0.3s ease;
     font-size: 1rem;
+    color: var(--text-color);
 }
 
 input[type="text"]:hover,
@@ -527,10 +528,11 @@ textarea:focus {
     outline: none;
     box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
     border-color: var(--accent-color);
+    background: var(--bg-color) !important;
 }
 
 ::placeholder {
-    color: rgba(204, 214, 246, 0.6);
+    color: rgba(204, 214, 246, 0.5) !important;
     font-style: italic;
 }
 
