@@ -172,6 +172,7 @@ endblock %} {% block head %}
     msgBody.refs[0] = jettonMinterCode;
     msgBody.refs[1] = jettonMinterData;
 
+    console.log(stateInit);
     const stateInitHash = await stateInit.hash();
     const estAddress = new Address(0 + ":" + TonWeb.utils.bytesToHex(stateInitHash));
     
