@@ -1,57 +1,68 @@
-{% extends "base.html" %}
-
-{% block title %}Jetton Vanity Deployer | lapis.uno{% endblock %}
-
-{% block head %}
-<script src="https://cdn.jsdelivr.net/npm/tonweb@0.0.66/src/index.min.js"></script>
+{% extends "base.html" %} {% block title %}Jetton Vanity Deployer | lapis.uno{%
+endblock %} {% block head %}
+<script src="https://cdn.jsdelivr.net/gh/orbs-network/ton-access@2.2.0/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/toncenter/tonweb/dist/tonweb.js"></script>
 <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="box-container vertical-layout">
-    <div class="body-card">
-        <h2>Jetton Vanity Deployer</h2>
-        <p>Deploy jetton with custom address using <a href="https://github.com/ton-community/vanity-contract">vanity-contract</a>.</p>
-    </div>
-    <div class="body-card">
-        <h2>Connect TON Wallet</h2>
-        <p>Connect your TON wallet to deploy jetton.</p>
-        <div id="ton-connect"></div>
-        <div id="wallet-connect-status" style="color: red;">Not connected</div>
-    </div>
+  <div class="body-card">
+    <h2>Jetton Vanity Deployer</h2>
+    <p>
+      Deploy jetton with custom address using
+      <a href="https://github.com/ton-community/vanity-contract"
+        >vanity-contract</a
+      >.
+    </p>
+  </div>
+  <div class="body-card">
+    <h2>Connect TON Wallet</h2>
+    <p>Connect your TON wallet to deploy jetton.</p>
+    <div id="ton-connect"></div>
+    <div id="wallet-connect-status" style="color: red">Not connected</div>
+  </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
+{% endblock %} {% block scripts %}
 <script>
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: '{{ url_for("static", path="tonconnect-manifest.json") }}',
-        buttonRootId: 'ton-connect'
+  const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: '{{ url_for("static", path="tonconnect-manifest.json") }}',
+    buttonRootId: "ton-connect",
+  });
+  TonAccess.getHttpEndpoint().then((endpoint) => {
+    const tonweb = new TonWeb(new TonWeb.HttpProvider(endpoint)); 
+  });
+  const Address = TonWeb.utils.Address;
+
+
+  async function connectToWallet() {
+    await tonConnectUI.openModal();
+  }
+
+  document.getElementById("ton-connect").onclick = () => {
+    connectToWallet().catch((error) => {
+      console.error("Error connecting to wallet:", error);
     });
+  };
 
-    async function connectToWallet() {
-        await tonConnectUI.openModal();
+  var state = {};
+
+  tonConnectUI.onStatusChange(
+    (wallet) => {
+      if (wallet) {
+        const rawAddress = wallet.account.address;
+        const address = new Address(rawAddress);
+        state.address = address.toString(true, true, false, false);
+        document.getElementById("wallet-connect-status").style.color = "green";
+        document.getElementById("wallet-connect-status").innerHTML =
+          "Connected <code>" + state.address + "</code>";
+        console.log("Wallet connected:", wallet);
+      }
+    },
+    (error) => {
+      console.error("Error connecting to wallet:", error);
+      document.getElementById("wallet-connect-status").style.color = "red";
+      document.getElementById("wallet-connect-status").innerHTML =
+        "Not connected";
     }
-
-    document.getElementById('ton-connect').onclick = () => {
-        connectToWallet().catch(error => {
-            console.error("Error connecting to wallet:", error);
-        });
-    };
-
-    tonConnectUI.onStatusChange(
-        (wallet) => {
-            if (wallet) {
-                document.getElementById('wallet-connect-status').style.color = 'green';
-                document.getElementById('wallet-connect-status').innerHTML = 'Connected';
-                console.log("Wallet connected:", wallet);
-            }
-        },
-        (error) => {
-            console.error("Error connecting to wallet:", error);
-            document.getElementById('wallet-connect-status').style.color = 'red';
-            document.getElementById('wallet-connect-status').innerHTML = 'Not connected';
-        }
-    );
+  );
 </script>
 {% endblock %}
