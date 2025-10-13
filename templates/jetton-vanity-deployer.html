@@ -153,8 +153,8 @@ endblock %} {% block head %}
     jettonMinterData.bits.writeCoins(0);
     jettonMinterData.bits.writeAddress(new Address(state.address));
     jettonMinterData.bits.writeAddress(new Address(zeroAddress));
-    cell.refs[0] = jettonWalletCode;
-    cell.refs[1] = metadataCell;
+    jettonMinterData.refs[0] = jettonWalletCode;
+    jettonMinterData.refs[1] = metadataCell;
 
     const saltBytes = Uint8Array.fromHex(salt);
 
