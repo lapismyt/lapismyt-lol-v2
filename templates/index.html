@@ -1,0 +1,353 @@
+{% extends "base.html" %} {% block title %}Main{% endblock %} {% block content
+%}
+<div class="box-container vertical-layout">
+  <div id="sorry-russian" style="color: #606b68">
+    Пока что я не интегрировал переводы, так что если ты не знаешь английский,
+    скорее всего придётся воспользоваться переводчиком в браузере, или чем-то
+    подобным :(
+  </div>
+
+  <div class="body-card">
+    <h2>❓ Who am I?</h2>
+
+    <ul>
+      <li>
+        Python developer, also exploring
+        <a href="https://www.rust-lang.org">Rust</a>.
+      </li>
+      <li>
+        I love cool technologies like <a href="https://ton.org">TON</a> and
+        <a href="https://en.wikipedia.org/wiki/Large_language_model">LLMs</a>.
+      </li>
+      <li>I like to play games, my favorite are <a href="https://minecraft.net">Minecraft</a>, <a href="https://osu.ppy.sh">osu!</a>, <a href="https://store.steampowered.com/app/1229490/ULTRAKILL">Ultrakill</a>.</li>
+    </ul>
+  </div>
+
+  <div class="body-card">
+    <h2>✌️ My projects</h2>
+
+    <p>Some of my projects you may find interesting:</p>
+    <ul>
+      <li>
+        <a href="https://github.com/lapismyt/spypixel">SpyPixel</a> 🕵️‍♂️ - online
+        spyware masked as a views counter badge. Educational purposes only.
+      </li>
+      <li>
+        <a href="https://t.me/Carrot_ChatBot">@Carrot_ChatBot</a> 🥕 (<a
+          href="https://github.com/lapismyt/carrot_bot"
+          >source</a
+        >) - self-learning Telegram bot for chats, that sometimes generates
+        funny phrases using
+        <a href="https://en.wikipedia.org/wiki/Markov_chain"
+          >Markov chain algorithm</a
+        >.
+      </li>
+      <li>
+        <a href="https://t.me/OnlineImagePostBot">@OnlineImagePostBot</a> 🖼 (<a
+          href="https://github.com/lapismyt/booru_autoposter"
+          >source</a
+        >) - customizable Telegram bot for automatic image posting from
+        imageboards to Telegram channels or chats. Supports
+        <a href="https://safebooru.org">Safebooru</a>,
+        <a href="https://gelbooru.com">Gelbooru</a>,
+        <a href="https://danbooru.donmai.us">Danbooru</a>,
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Rule34</a>.
+      </li>
+      <li>
+        <a href="https://github.com/lapismyt/vannish_cards_bot"
+          >Vannish Cards Bot</a
+        >
+        🎴 - Telegram bot created exclusively for Minecraft server
+        <a href="https://t.me/vannishUSE">VANNISH</a>, that generates
+        collectible cards with players from the server. (<a
+          href="https://raw.githubusercontent.com/lapismyt/vannish-cards/refs/heads/main/assets/example.jpg"
+          >example</a
+        >)
+      </li>
+      <li>
+        <a href="https://github.com/PieMC-Dev/PieRakNet">PieRakNet</a> 🍰 - 
+        Python implementation of <a href="https://github.com/facebookarchive/RakNet">RakNet</a> protocol. This isn't my solo project,
+        but this is result of collaborative work of
+        <a href="https://github.com/PieMC-Dev">PieMC Team</a>. Part of the
+        <a href="https://github.com/PieMC-Dev/PieMC">PieMC project</a> (WIP).
+      </li>
+      <li>
+        <a href="https://t.me/NOT_YTM_BOT">@NOT_YTM_BOT</a> 📥 (<a
+          href="https://github.com/lapismyt/inline_yt_music"
+          >source</a
+        >) - Inline Telegram bot for search and send YouTube music to chats.
+        Completely free and open-source, no ads, but it have bugs.
+      </li>
+    </ul>
+  </div>
+
+  <div class="body-card">
+    <h2>❤️ Favorite libraries & tools</h2>
+
+    <ul>
+      <li>
+        <b><a href="https://github.com/yungwine/pytoniq">Pytoniq</a> // </b>
+        <a href="https://github.com/lapismyt/vanity-deployer">vanity-deployer</a
+        >,
+        <a href="https://github.com/lapismyt/jetton-data-gen"
+          >jetton-data-gen</a
+        >
+      </li>
+      <li>
+        <b><a href="https://github.com/aiogram/aiogram">Aiogram</a> // </b>
+        <a href="https://t.me/YMNow_BOT">@YMNow_BOT</a> (<a
+          href="https://github.com/lapismyt/ymnow_inline_bot"
+          >source</a
+        >), <a href="https://t.me/ZipZapZap_BOT">@ZipZapZap_BOT</a> (<a
+          href="https://github.com/lapismyt/inline_llm"
+          >source</a
+        >), <a href="https://t.me/Carrot_ChatBot">@Carrot_ChatBot</a> (<a
+          href="https://github.com/lapismyt/carrot_bot"
+          >source</a
+        >),
+        <a href="https://t.me/OnlineImagePostBot">@OnlineImagePostBot</a> (<a
+          href="https://github.com/lapismyt/booru_autoposter"
+          >source</a
+        >), <a href="https://t.me/vannish_cards_bot">@vannish_cards_bot</a> (<a
+          href="https://github.com/lapismyt/vannish_cards_bot"
+          >source</a
+        >)
+      </li>
+      <li>
+        <b><a href="https://github.com/LonamiWebs/Telethon">Telethon</a> // </b>
+        <a href="https://t.me/NOT_YTM_BOT">@NOT_YTM_BOT</a> (<a
+          href="https://github.com/lapismyt/inline_yt_music"
+          >source</a
+        >),
+        <a href="https://github.com/lapismyt/telegram_gifts_sniper"
+          >Telegram Gifts Sniper</a
+        >
+      </li>
+      <li>
+        <b>SQLModel // </b>
+        <a href="https://github.com/lapismyt/spypixel">SpyPixel</a>,
+        <a href="https://t.me/NOT_YTM_BOT">@NOT_YTM_BOT</a> (<a
+          href="https://github.com/lapismyt/inline_yt_music"
+          >source</a
+        >), <a href="https://t.me/YMNow_BOT">@YMNow_BOT</a> (<a
+          href="https://github.com/lapismyt/ymnow_inline_bot"
+          >source</a
+        >), <a href="https://t.me/vannish_cards_bot">@vannish_cards_bot</a> (<a
+          href="https://github.com/lapismyt/vannish_cards_bot"
+          >source</a
+        >)
+      </li>
+      <li>
+        <b><a href="https://sqlmodel.tiangolo.com">FastAPI</a> // </b>
+        <a href="https://github.com/lapismyt/spypixel">SpyPixel</a>
+      </li>
+      <li>
+        <b
+          >/ <a href="https://github.com/astral-sh/ruff">Ruff</a>,
+          <a href="https://github.com/astral-sh/uv">UV</a>,
+          <a href="https://github.com/Delgan/loguru">Loguru</a> &lt;3 /</b
+        >
+      </li>
+    </ul>
+
+    <p>
+      By the way, this site is using
+      <a href="https://github.com/astral-sh/ruff">Ruff</a>,
+      <a href="https://github.com/astral-sh/uv">UV</a> and
+      <a href="https://sqlmodel.tiangolo.com">FastAPI</a> from this list 🤓
+    </p>
+  </div>
+
+  <div class="body-card">
+    <h2>✨ Hobbies</h2>
+
+    <ul>
+      <li>
+        I like programming, it's really fun most of the time. My primary
+        language is <a href="https://www.python.org">Python</a>, but I also
+        like <a href="https://www.rust-lang.org">Rust</a>, though I'm not
+        know it really well (yet :3).
+      </li>
+      <li>
+        I like to draw sometimes (primarily in
+        <a href="https://krita.org">Krita</a>), even though I'm not good at it.
+        Maybe I'll put here link to the page with my drawings (or not XD). Btw, <a href="/static/images/favicon.png">favicon</a> of this page is drawn by me.
+      </li>
+      <li>
+        Very rarely, but exploring
+        <a href="https://en.wikipedia.org/wiki/Machine_learning">ML</a>,
+        especially <a href="https://www.tensorflow.org">TensorFlow</a> (PyTorch
+        is too hard for me now).
+      </li>
+      <li>
+        I'm trying to learn <a href="https://www.blender.org">Blender</a>,
+        honestly it'll be good for me if I'll be able to make 3D models just for
+        memes or something.
+      </li>
+      <li>
+        Also trying to make something in
+        <a href="https://www.image-line.com">FL Studio</a>, and it's always
+        sound boring and flat, but it's just fun enough.
+      </li>
+      <li>
+        Slowly, but surely, developing
+        <a href="https://github.com/lapismyt/cassetes-of-choice">game</a>
+        powered by <a href="https://godotengine.org/">Godot Engine 4</a>, with
+        my <a href="https://github.com/ananasBedrock59">friend</a>.
+      </li>
+    </ul>
+  </div>
+
+  <div class="body-card">
+    <h2>✍️ TODOs</h2>
+    <h5>Queued 🔜</h5>
+    <ul>
+      <li>
+        Make Telegram bot for generating images using
+        <a href="https://aihorde.net">AI Horde</a> API.
+      </li>
+      <li>
+        Rework <a href="https://github.com/PieMC-Dev/PieRakNet">PieRakNet</a>.
+      </li>
+      <li>
+        Make Telegram Business auto-replying bot, based on <a href="https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image">Gemini Flash 2.5</a>.
+      </li>
+      <li>
+        Upgrade this website somehow, maybe add some fun stuff or useful tools.
+      </li>
+      <li>
+        Continue developing of
+        <a href="https://github.com/lapismyt/tonutils-rs">tonutils-rs</a>.
+      </li>
+    </ul>
+    <h5>Ideas for the future 💡</h5>
+    <ul>
+      <li>
+        Make ad-free and not so laggy analog for
+        <a href="https://namemc.com">NameMC</a>. Maybe it will contain less
+        functionality, but it'll be more lightweight and faster for just
+        checking and downloading players' skins.
+      </li>
+      <li>
+        Make web-interface to deploy and manage
+        <a href="https://github.com/ton-blockchain/jetton-contract"
+          >modern jetton contract</a
+        >
+        on <a href="https://ton.org">TON</a>, and also to deploy jettons with
+        custom addresses using
+        <a href="https://github.com/ton-community/vanity-contract"
+          >vanity-contract</a
+        >.
+      </li>
+      <li>Make Telegram bot for downloading music from Spotify/SoundCloud?</li>
+      <li>Some funny stuff based on <a href="https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image">Gemini Flash 2.5 Image</a>.</li>
+      <li>Self-generating webpages via <a href="https://en.wikipedia.org/wiki/Large_language_model">LLM</a>.</li>
+    </ul>
+  </div>
+
+  <div class="body-card">
+    <h2>😜 Some extra stupid info</h2>
+    <h5>Languages 🌎</h5>
+    <ul>
+      <li>🇷🇺 Russian (native)</li>
+      <li>🇺🇸 English (not really good)</li>
+    </ul>
+    <h5>Timezone 🕔</h5>
+    <ul>
+      <li>
+        🤓 UTC+3
+      </li>
+      <li>
+        ⏳ Current time: <b><span id="current-time">Loading...</span></b>
+      </li>
+    </ul>
+    <h5>Age 🤸‍♂️</h5>
+    <ul>
+      <li>
+        🧑 I'm <b><span id="age">16</span></b> years old
+      </li>
+    </ul>
+    <h5>OS 🧑‍💻</h5>
+    <ul>
+      <li>🤓 I use EndeavourOS (GNOME) + Android now :3</li>
+    </ul>
+    <br />
+    <p id="promise">
+      <b>Maybe here will be some small web-projects later 🔜</b>
+    </p>
+    You can subsribe to my
+    <a href="https://t.me/LapisMYT_Channel">shitpost channel in Telegram</a>, if
+    you interested. But generally, there is very silly stuff in there, so don't
+    expect something serious. And it's on Russian, yep.
+  </div>
+
+  <div class="body-card">
+    <!-- <h2>Socials</h2> -->
+    <div class="social-links">
+      <a
+        href="https://t.me/lapismyt"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <i class="fab fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+      <a
+        href="https://github.com/lapismyt"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a
+        href="https://x.com/lapismyt"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <i class="fab fa-x-twitter"></i>
+        <span>X (Twitter)</span>
+      </a>
+      <a
+        href="https://discord.com/users/lapismyt"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <i class="fab fa-discord"></i>
+        <span>Discord</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="sorry-ugly" style="color: #39504a">
+    Sorry if this page hurts your eyes. I'm not really experienced in web-design
+    or frontend development, but I'm trying.
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="/static/js/current_time_getter.js?v=1"></script>
+<script src="/static/js/age_full_getter.js?v=3"></script>
+<script>
+  function updateClocks() {
+    const clockElement = document.getElementById("current-time");
+    if (clockElement) {
+      clockElement.innerHTML = getCurrentTime();
+    }
+
+    const clockAgeElement = document.getElementById("age");
+    if (clockAgeElement) {
+      updateAge();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    updateClocks();
+
+    setInterval(updateClocks, 1000);
+  });
+</script>
+{% endblock %}

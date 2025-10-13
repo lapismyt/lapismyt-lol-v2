@@ -1,0 +1,23 @@
+[project]
+name = "lapismyt-lol-v2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "loguru",
+    "sqlmodel",
+    "uvicorn",
+    "aiohttp",
+    "pytoniq",
+    "aiogram~=3.19.0",
+    "jinja2",
+]
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "ruff",
+    "bandit"
+]
