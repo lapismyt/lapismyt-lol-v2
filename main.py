@@ -8,10 +8,10 @@ from datetime import datetime
 
 app = FastAPI()
 
+
 app.mount('/static', StaticFiles(directory='static'), name='static')
 
 templates = Jinja2Templates(directory='templates')
-
 
 def current_year() -> int:
     return int(datetime.now().year)
@@ -33,9 +33,15 @@ async def sitemap(request: Request) -> Response:
 
 
 @app.get('/', response_class=HTMLResponse)
-async def read_item(request: Request) -> Response:
+async def index(request: Request) -> Response:
     return templates.TemplateResponse(
         name='index.html', context={'request': request, 'current_year': current_year()}
+    )
+
+@app.get('/jetton-vanity-deployer', response_class=HTMLResponse)
+async def vanity_deployer(request: Request) -> Response:
+    return templates.TemplateResponse(
+        name='jetton-vanity-deployer.html', context={'request': request}
     )
 
 if __name__ == '__main__':

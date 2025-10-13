@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Jetton Vanity Deployer | lapis.uno{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/tonweb@0.0.66/src/index.min.js"></script>
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="box-container vertical-layout">
+    <div class="body-card">
+        <h2>Jetton Vanity Deployer</h2>
+        <p>Deploy jetton with custom address using <a href="https://github.com/ton-community/vanity-contract">vanity-contract</a>.</p>
+    </div>
+    <div class="body-card">
+        <h2>Connect TON</h2>
+        <p>Connect your TON wallet to deploy jettons.</p>
+        <div id="ton-connect"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: '{{ url_for("static", path="tonconnect-manifest.json") }}',
+        buttonRootId: 'ton-connect'
+    });
+
+    async function connectToWallet() {
+        await tonConnectUI.openModal();
+    }
+
+    document.getElementById('ton-connect').onclick = () => {
+        connectToWallet().catch(error => {
+            console.error("Error connecting to wallet:", error);
+        });
+    };
+</script>
+{% endblock %}
