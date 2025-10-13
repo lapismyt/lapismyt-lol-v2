@@ -179,7 +179,7 @@ endblock %} {% block head %}
     const stateInitHash = await stateInit.hash();
     const estAddress = new Address(0 + ":" + TonWeb.utils.bytesToHex(stateInitHash));
     
-    if (not (estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false))) {
+    if (!(estAddress.toString(true, true, false, false) == (new Address(jettonAddr)).toString(true, true, false, false))) {
     //   alert('Addresses are equal');
     //   return;
     // } else {
