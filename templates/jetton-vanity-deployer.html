@@ -102,7 +102,7 @@ jetton, vanity, contract, deploy, custom, address, ton, tep, func, python, salt,
 {% endblock %} {% block scripts %}
 <script>
   const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: '{{ url_for("static", path="tonconnect-manifest.json") }}',
+    manifestUrl: 'https://lapis.uno/static/tonconnect-manifest.json',
     buttonRootId: "ton-connect",
   });
   const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: ''}));
