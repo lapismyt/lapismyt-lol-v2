@@ -194,7 +194,7 @@ endblock %} {% block head %}
         {
             address: estAddress.toString(true, true, false, false),
             amount: "50000000",
-            stateInit: await stateInit.toBoc(),
+            stateInit: (await stateInit.toBoc()).toBase64(),
         },
       ]
     };
